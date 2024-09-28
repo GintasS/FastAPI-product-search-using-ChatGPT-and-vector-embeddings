@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>Amazing GitHub Template - Sane defaults for your next project!</h1>
+  <h1>Such Much AI Coding Test</h1>
   <br />
   <br />
 </div>
