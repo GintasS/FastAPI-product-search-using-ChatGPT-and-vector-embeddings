@@ -11,7 +11,7 @@ def cosine_similarity(a, b):
   return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
 
 def get_similarity_dataframe(query: str, dataset: pd.core.frame.DataFrame, rows: int) -> pd.core.frame.DataFrame:
-  SIMILARITIES_RESULTS_THRESHOLD = 0.75
+  SIMILARITIES_RESULTS_THRESHOLD = 0.70
 
   # create a copy of the dataset
   dataset_vectors = dataset.copy()
