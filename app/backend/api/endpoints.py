@@ -29,9 +29,3 @@ async def handle_new_chat_message_from_user(new_message : CreateChatMessageReque
     response_string = AssistantMessages.ASSISTANT_MESSAGE_PRODUCTS_BETWEEN_PRICE.format(products_with_prices_string)
 
   return CreateChatMessageResponse(text=response_string)
-  
-@app.post("/v1/products/search/description")
-async def get_products_by_description(description):
-  similarity_df = get_similarity_dataframe(description, products_embeddings, 5) 
-  
-  return {"similar_descriptions": similarity_df['Title'].to_json(orient="records")}
