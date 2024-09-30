@@ -10,7 +10,6 @@ def read_csv(file_path: str) -> pd.core.frame.DataFrame:
 def clean_data(df : pd.core.frame.DataFrame):
   df = df.dropna()
   return df
-
 def get_product_embeddings():
   products_df = read_csv(File.PRODUCT_INPUT_FILE_PATH)
   products_df = clean_data(products_df)
@@ -18,9 +17,14 @@ def get_product_embeddings():
   products_embeddings = []
   for index, row in products_df.iterrows(): 
     product_description_html = BeautifulSoup(row["Description"])
-    product_description_zero_html = product_description_html.get_text()
+    product_description_zero_html = product_description_html.get_text().replace('\n',' ') 
 
-    single_product_full_description = row["Title"] + " " + product_description_zero_html + " " + row["Type"] + row["Tags"]
+    if len(product_description_zero_html) > 100:
+      product_description_zero_html = product_description_zero_html.split('.')[0]
+    else:
+      product_description_zero_html = product_description_zero_html[:100]
+
+    single_product_full_description = row["Title"] + " " + product_description_zero_html
     
     single_product_embedding = get_embedding(single_product_full_description)
     single_product_embedding 
