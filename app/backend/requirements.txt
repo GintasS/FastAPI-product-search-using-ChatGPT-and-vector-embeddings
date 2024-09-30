@@ -1,0 +1,10 @@
+baml_py==0.57.1
+beautifulsoup4==4.12.3
+fastapi==0.115.0
+numpy==2.1.1
+openai==1.50.2
+pandas==2.2.3
+pydantic==2.9.2
+python-dotenv==1.0.1
+typing_extensions==4.12.2
+uvicorn==0.31.0
