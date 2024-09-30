@@ -13,7 +13,7 @@
   - [Prerequisites](#prerequisites)
   - [Usage](#usage)
     - [Manual setup](#manual-setup)
-    - [Deploying to AWS](#deploying-to-aws)
+    - [System Design](#system-design)
     - [Environment variables](#environment-variables)
 - [License](#license)
 
@@ -27,9 +27,19 @@
 <tr>
 <td>
 
-Open Source Software is not about the code in the first place but the communications and community. People love good documentation and obvious workflows. If your software solves some problem, but nobody can figure out how to use it or, for example, how to create an effective bug report, there's something very bad going on. Did you hear about Readme Driven Development? Check out the awesome [article written by GitHub co-founder Tom Preston-Werner](https://tom.preston-werner.com/2010/08/23/readme-driven-development.html).
+This is a coding exercise for Such Much AI. The front-end part was not implemented due to time constraints.
+The app has a single API endpoint, that returns either product recomendations or the price of the products, depending on the input.
 
-There are many great README or issues templates available on GitHub, however, you have to find them yourself and combine different templates yourself. In addition, if you want extensive docs like CODE_OF_CONDUCT.md, CONTRIBUTING.md, SECURITY.md or even advanced GitHub features like a pull request template, additional labels, code scanning, and automatic issue/PR closing and locking you have to do much more work. Your time should be focused on creating something **amazing**. You shouldn't be doing the same tasks over and over like creating your GitHub project template from scratch. Follow the **don’t repeat yourself** principle. Use a template **and go create something amazing**!
+I've using Chat GPT 4o mini model for prompt engineering (to categorize user input, extract product description from input, extract product price).
+
+I've also using text-embedding-ada-002 for the embeddings.
+
+Some cleanup for the products.csv was done:
+* removed HTML;
+* removed new lines;
+* used the first sentence (100 chars) for the embeddings.
+
+I'm storing product_embeddings inside a Pandas dataframe (database -> in_memory.db.py)
 
 </td>
 </tr>
@@ -57,15 +67,14 @@ There are many great README or issues templates available on GitHub, however, yo
 #### Manual setup
 
 Please follow these steps for manual setup:
-1. Set-up the Discord bot on the Discord Developer Portal and add it to your server.
-2. Download this GitHub repository.
-3. Create a virtual environment.
+1. Download this GitHub repository.
+2. Create a virtual environment.
 
     ```
     python3 -m venv <myenvname>
     ```
 
-4. Activate virtual environment.
+3. Activate virtual environment.
 
     ```
     cd venv
@@ -73,34 +82,30 @@ Please follow these steps for manual setup:
     ```
     Or different Activate script, if you are not working from Visual Code.
 
-5. Install packages from requirements.txt
+4. Install packages from requirements.txt
 
     ```
     pip install -r /path/to/requirements.txt
     ```
 
-#### Deploying to AWS
+5. Download [VS Code extension for BAML](https://marketplace.visualstudio.com/items?itemName=Boundary.baml-extension)
 
-1. Create a AWS RDS instance to host the PostgreSQL database.
-2. Make sure the program works, run at least once to check if the discord bot is running.
-3. In the ```.env``` file, change the ```CURRENT_ENVIRONMENT_NAME``` variable to use ```PROD``` .
-4. Run Docker command from the terminal to build an image:
+6. Go to any .baml file and click Save (CTRL + S). This will generate python code from .BAML.
+
+7. If the baml_client got generated in the root directory, move it inside app/backend.
+
+8. Inside baml_src > clients.baml, replace your api_key for GPT4oMini model.
+   Also do this for the .env file's ```OPENAI_API_KEY``` key.
+
+9. Run the app:
+
     ```
-    docker build -t questions-answer-matcher-container .
+    python main.py
     ```
-5. Run AWS CLI command to push the Docker Image:
-    ```
-    aws lightsail push-container-image --service-name question-answer-matcher-service --label questions-answer-matcher-container --image questions-answer-matcher-container
-    ```
-6. Change the ```containers.json``` in the app directory to use the latest image
-    ```
-    question-answer-matcher-service.questions-answer-matcher-prodX.X
-    ```
-7. Create an AWS deployment like this:
-    ```
-    aws lightsail create-container-service-deployment --service-name question-answer-matcher-service --containers file://containers.json
-    ```
-8. Check AWS Web UI for any errors.
+
+#### System Design
+
+You can find System Design notes in [Miro](https://miro.com/app/board/uXjVLZLm9gc=/?share_link_id=867179278993).
 
 
 #### Environment variables
@@ -109,11 +114,7 @@ in the .env file, replace these environment variables with your own values.
 
 | Name                       | Default value      | Description                                                                 |
 | -------------------------- | ------------------ | --------------------------------------------------------------------------- |
-| PROJECT_NAME               | My Amazing Project | Your project name                                                           |
-| REPO_SLUG                  | my-amazing-project | Repo slug must match the GitHub repo URL slug part                          |
-| GITHUB_USERNAME            | dec0dOS            | Your GitHub username **without @**                                          |
-| FULL_NAME                  | Alexey Potapov     | Your full name                                                              |
-| OPEN_SOURCE_LICENSE        | MIT license        | Full OSS license name                                                       |
+| OPENAI_API_KEY               |  | OpenAI API KEY                                                            |
 
 ## License
 
