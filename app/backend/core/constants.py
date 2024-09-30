@@ -17,4 +17,4 @@ class AssistantMessages:
 
 class OPENAI:
   API_KEY = str(os.environ['OPENAI_API_KEY'])
-  EMBEDDING_MODEL = "text-embedding-3-small"
+  EMBEDDING_MODEL = "text-embedding-ada-002"
