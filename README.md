@@ -9,9 +9,7 @@
 
 - [About](#about)
   - [Built With](#built-with)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Usage](#usage)
+- [Usage](#usage)
     - [Manual setup](#manual-setup)
     - [System Design](#system-design)
     - [Environment variables](#environment-variables)
@@ -55,16 +53,6 @@ I'm storing product_embeddings inside a Pandas dataframe (database -> in_memory.
 - Pandas
 - Numpy
 - Swagger
-
-## Getting Started
-
-### Prerequisites
-
-1. The easiest way to install Cookiecutter is by running:
-
-    ```sh
-    pip install --user cookiecutter
-    ```
 
 ### Usage
 
