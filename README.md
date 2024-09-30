@@ -39,7 +39,7 @@ Some cleanup for the products.csv was done:
 * removed new lines;
 * used the first sentence (100 chars) for the embeddings.
 
-I'm storing product_embeddings inside a Pandas dataframe (database -> in_memory.db.py)
+I'm storing product_embeddings inside a Pandas dataframe (database -> in_memory.db.py).
 
 </td>
 </tr>
@@ -47,10 +47,14 @@ I'm storing product_embeddings inside a Pandas dataframe (database -> in_memory.
 
 ### Built With
 
-- [GitHub Flavored Markdown Spec](https://github.github.com/gfm/)
-- [Cookiecutter](https://github.com/cookiecutter/cookiecutter)
-- [GitHub Actions](https://github.com/features/actions)
-- [markdownlint-cli](https://github.com/igorshubovych/markdownlint-cli)
+- BAML
+- Python 3.12
+- FastAPI
+- OpenAI
+- Pydantic
+- Pandas
+- Numpy
+- Swagger
 
 ## Getting Started
 
