@@ -7,7 +7,8 @@ enum MessageCategory {
 function ExtractMessageCategoryFromMessage(message: string) -> MessageCategory {
   client GPT4oMini
   prompt #"
-    Determine the category of the user's message from the following content:
+    Determine the category of the user's message from the following content. 
+    Is the user asking about the product recommendations or about the product price?:
     {{ message }}
 
     {{ ctx.output_format }}
