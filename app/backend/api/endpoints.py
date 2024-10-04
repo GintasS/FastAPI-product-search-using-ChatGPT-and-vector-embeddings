@@ -18,7 +18,7 @@ async def handle_new_chat_message_from_user(new_message : CreateChatMessageReque
 
   if message_category is MessageCategory.QuestionAboutProductDescription:
     product_description_by_user = await extract_product_description_from_message(new_message.text)
-    similarity_df = get_similarity_dataframe(product_description_by_user, products_embeddings, General.GET_TOP_X_RESULTS_FROM_SIMILARITY_DATAFRAME)
+    similarity_df = get_similarity_dataframe(product_description_by_user.text, products_embeddings, General.GET_TOP_X_RESULTS_FROM_SIMILARITY_DATAFRAME)
     products_with_titles_and_prices = get_products_with_prices_string(similarity_df)
     response_string = AssistantMessages.ASSISTANT_MESSAGE_RECOMMENDED_PRODUCTS.format(products_with_titles_and_prices)
 
