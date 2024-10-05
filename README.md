@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>Such Much AI Coding Test</h1>
+  <h1>FastAPI product search using vector embeddings</h1>
   <br />
   <br />
 </div>
@@ -25,19 +25,17 @@
 <tr>
 <td>
 
-This is a coding exercise for Such Much AI. The front-end part was not implemented due to time constraints.
-The app has a single API endpoint, that returns either product recomendations or the price of the products, depending on the input.
+This project is a backend system built with FastAPI, designed to enable product search using natural language queries. It offers endpoints for searching products by description and price. 
+The solution integrates the ChatGPT-4.0 mini model for prompt engineering tasks, including categorizing user inputs, extracting product descriptions, and retrieving price details. 
+Additionally, it utilizes the text-embedding-ada-002 model to generate semantic embeddings for more accurate and efficient product matching.
 
-I've using Chat GPT 4o mini model for prompt engineering (to categorize user input, extract product description from input, extract product price).
-
-I've also using text-embedding-ada-002 for the embeddings.
-
-Some cleanup for the products.csv was done:
-* removed HTML;
-* removed new lines;
-* used the first sentence (100 chars) for the embeddings.
-
-I'm storing product_embeddings inside a Pandas dataframe (database -> in_memory.db.py).
+The searchable products are in a product_embeddings.csv file with pre-computed embeddings. These are stored in a pandas dataframe, in-memory.<br>
+The embedding for each product includes:
+* product title
+* product description
+* product vendor
+* product type
+* product tags
 
 </td>
 </tr>
