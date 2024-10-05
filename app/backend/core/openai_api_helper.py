@@ -3,9 +3,9 @@ from core.constants import *
 
 client = OpenAI(api_key=OPENAI.API_KEY)
 
-def get_embedding(input : str):
+def get_embedding(input : str, embedding_model : str):
   http_embedding_response = client.embeddings.create(
-    model=OPENAI.EMBEDDING_MODEL,
+    model=embedding_model,
     input=input
   )
 
