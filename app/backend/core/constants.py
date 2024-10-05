@@ -15,6 +15,7 @@ class General:
 
 class AssistantMessages:
   ASSISTANT_MESSAGE_PRODUCT_SIMILARITY_SEARCH_FAILURE = "We failed to find similar products from your search."
+  ASSISTANT_MESSAGE_INVALID_DESCRIPTION = "We failed to found products that correspond to your description."
 
 class OPENAI:
   API_KEY = str(os.environ['OPENAI_API_KEY'])
