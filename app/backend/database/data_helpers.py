@@ -1,6 +1,6 @@
 import pandas as pd
 from bs4 import BeautifulSoup
-from api.openai_api_helper import get_embedding
+from core.openai_api_helper import get_embedding
 from core.constants import *
 
 def read_csv(file_path: str) -> pd.core.frame.DataFrame:
@@ -35,7 +35,7 @@ def get_product_embeddings():
   products_embeddings.columns = ["Title", "Full Description", "Price", "Embedding"]
   products_embeddings.to_csv(File.PRODUCT_EMBEDDINGS_FILE_PATH, index=False)
 
-def apply_mask_for_dataframe(df, masks : list):
+def apply_mask_for_df(df, masks : list):
   combined_mask = ""
   if len(masks) == 1:
     combined_mask = masks[0]
@@ -52,3 +52,14 @@ def get_products_with_prices_string(df):
     for index, row in df.iterrows():
         combined_string += f"Title: {row['Title']}, Price: {row['Price']}\n"
     return combined_string
+
+def is_product_description_valid(description):
+  return "No Product Description" not in description
+
+def is_price_range_valid(price_range_list):
+  return len(price_range_list) > 0
+
+def get_products_summary(df):
+    product_summary = f"I found {len(df)} products. "
+    product_summary += ", ".join([f"{row['Title']}: {row['Price']}" for index, row in df.iterrows()])
+    return product_summary
