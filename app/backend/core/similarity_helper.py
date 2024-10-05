@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-from api.openai_api_helper import get_embedding
+from core.openai_api_helper import get_embedding
 
 def cosine_similarity(a, b):
   if len(a) > len(b):
@@ -10,14 +10,12 @@ def cosine_similarity(a, b):
       a = np.pad(a, (0, len(b) - len(a)), 'constant')
   return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
 
-def get_similarity_dataframe(query: str, dataset: pd.core.frame.DataFrame, rows: int) -> pd.core.frame.DataFrame:
-  SIMILARITIES_RESULTS_THRESHOLD = 0.70
-
+def get_similarity_df(query, dataset, rows, similarities_results_threshold, embedding_model) -> pd.core.frame.DataFrame:
   # create a copy of the dataset
   dataset_vectors = dataset.copy()
 
   # get the embeddings for the query    
-  query_embeddings = get_embedding(query)
+  query_embeddings = get_embedding(query, embedding_model)
 
   # create a new column with the calculated similarity for each row
   dataset_vectors["similarity"] = dataset_vectors["Embedding"].apply(
@@ -25,7 +23,7 @@ def get_similarity_dataframe(query: str, dataset: pd.core.frame.DataFrame, rows:
   )
 
   # filter the videos by similarity
-  mask = dataset_vectors["similarity"] >= SIMILARITIES_RESULTS_THRESHOLD
+  mask = dataset_vectors["similarity"] >= similarities_results_threshold
   dataset_vectors = dataset_vectors[mask].copy()
 
   # sort the videos by similarity
