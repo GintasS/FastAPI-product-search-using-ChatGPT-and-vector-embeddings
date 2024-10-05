@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>FastAPI product search using vector embeddings</h1>
+  <h1>FastAPI product search using ChatGPT-4o mini and vector embeddings</h1>
   <br />
   <br />
 </div>
