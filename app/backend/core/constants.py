@@ -8,12 +8,13 @@ class File:
   PRODUCT_INPUT_FILE_PATH = "app//backend//static/product_input.csv"
 
 class General:
-  GET_TOP_X_RESULTS_FROM_SIMILARITY_DATAFRAME = 5
+  GET_TOP_X_RESULTS_SIMILARITY_DF = 5
+  SIMILARITIES_RESULTS_THRESHOLD = 0.80
+  SIMILARITIES_RESULTS_MINIMUM_THRESHOLD = 0.5
+  
 
 class AssistantMessages:
-  ASSISTANT_MESSAGE_RECOMMENDED_PRODUCTS = "Here are some products you might like: {}"
-  ASSISTANT_MESSAGE_PRODUCTS_BETWEEN_PRICE = "Here are some products within your price range: {}"
-  ASSISTANT_MESSAGE_SORRY_MESSAGE = "I couldn't understand you, do you want to get product recommendations or ask about the price?"
+  ASSISTANT_MESSAGE_PRODUCT_SIMILARITY_SEARCH_FAILURE = "We failed to find similar products from your search."
 
 class OPENAI:
   API_KEY = str(os.environ['OPENAI_API_KEY'])
