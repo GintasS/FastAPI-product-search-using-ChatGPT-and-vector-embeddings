@@ -8,16 +8,24 @@ from database.data_helpers import is_product_description_valid, is_price_range_v
 from database.in_memory_db import products_embeddings
 from core.constants import AssistantMessages
 from core.constants import *
+from fastapi import status, HTTPException
 
-@app.post("/v1/chat/message/")
+@app.post("/v1/chat/message/", response_model=CreateChatMessageResponse)
 async def handle_new_chat_message_from_user(request: CreateChatMessageRequest):
+  """
+  Retrieve a product recommendation from a description and/or filter products by a price range.
+
+  Usage: "text": "could you recommend me a shampoo"
+  Usage: "text": "could you recommend me a shampoo between 10 and 15"
+  """
+  
   extracted_chat_gpt_request = await extract_product_information_from_message(request.text)
   product_description = extracted_chat_gpt_request.description
   product_price_range = extracted_chat_gpt_request.price_range
   global products
   products = products_embeddings
   filter_was_active = False
-  
+
   if is_product_description_valid(product_description):
     products = get_similarity_df(product_description, products, request.similarities_results_max_count, request.similarities_results_threshold, OPENAI.EMBEDDING_MODEL) 
     filter_was_active = True
@@ -32,8 +40,13 @@ async def handle_new_chat_message_from_user(request: CreateChatMessageRequest):
   product_summary = get_products_summary(products)
   return CreateChatMessageResponse(text=product_summary)
 
-@app.post("/v1/chat/product/description/")
+@app.post("/v1/chat/product/description/", response_model=CreateChatMessageResponse)
 async def handle_product_description_request(request: CreateChatMessageRequest):
+  """
+  Recommend other products by a product description.
+
+  Usage: "text": "could you recommend me a shampoo"
+  """
   extracted_chat_gpt_request = await extract_product_information_from_message(request.text)
   product_description = extracted_chat_gpt_request.description
 
@@ -47,8 +60,13 @@ async def handle_product_description_request(request: CreateChatMessageRequest):
   product_summary = get_products_summary(products)
   return CreateChatMessageResponse(text=product_summary)
 
-@app.post("/v1/chat/product/price/")
+@app.post("/v1/chat/product/price/", response_model=CreateChatMessageResponse)
 async def handle_product_price_range_request(request: GetProductsInPriceRangeRequest):
+  """
+  Filter products by a price range. 
+
+  Usage: "text": "could you recommend me a shampoo between 10 and 15"
+  """
   extracted_chat_gpt_request = await extract_product_information_from_message(request.text)
   product_price_range = extracted_chat_gpt_request.price_range
 
