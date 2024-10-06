@@ -130,6 +130,14 @@ The response from the third endpoint that filters products by the price only.
 <img src="docs/screenshots/screenshot7.JPG" width="800" height="300"><br>
 The example of how a prompt to ChatGPT can look like.
 
+<img src="docs/screenshots/screenshot7.JPG" width="800" height="300"><br>
+The example of how a prompt to ChatGPT can look like.
+
+<img src="docs/screenshots/fastapi-screen-capture.mp4" width="800" height="300"><br>
+[![Watch the video](https://img.youtube.com/vi/jadqKtgYj2U/0.jpg)](https://www.youtube.com/watch?v=jadqKtgYj2U)
+The video demo.
+
+
 ## License
 
 This project is licensed under the **MIT license**. Feel free to edit and distribute this template as you like.
