@@ -95,7 +95,7 @@ Please follow these steps for manual setup:
 
 #### System Design
 
-You can find System Design notes in [Miro](https://miro.com/app/board/uXjVLZLm9gc=/?share_link_id=867179278993).
+You can find System Design notes in the Product Search.pdf file.
 
 
 #### Environment variables
