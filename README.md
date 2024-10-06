@@ -9,6 +9,7 @@
 
 - [About](#about)
   - [Built With](#built-with)
+- [API endpoints](#api-endpoints)
 - [Usage](#usage)
     - [Manual setup](#manual-setup)
     - [System Design](#system-design)
@@ -52,6 +53,25 @@ The embedding for each product includes:
 - Pandas
 - Numpy
 - Swagger
+
+## API Endpoints
+
+These endpoints allow users to retrieve product recommendations based on descriptions or filter products by price range:
+
+**POST /v1/chat/message/**
+  - **Description**: Retrieve a product recommendation from a description and/or filter products by a price range.
+  - **Request Model**: `CreateChatMessageRequest`
+  - **Response Model**: `CreateChatMessageResponse`
+
+**POST /v1/chat/product/description/** 
+  - **Description**: Recommend other products by a product description.
+  - **Request Model**: `CreateChatMessageRequest`
+  - **Response Model**: `CreateChatMessageResponse`
+
+**POST /v1/chat/product/price/**
+  - **Description**: Filter products by a price range.
+  - **Request Model**: `GetProductsInPriceRangeRequest`
+  - **Response Model**: `CreateChatMessageResponse`
 
 ### Usage
 
@@ -111,11 +131,6 @@ in the .env file, replace these environment variables with your own values.
 
 <img src="docs/screenshots/screenshot1.JPG" width="800" height="400"><br>
 The main Swagger view.
-
-## API Endpoints Overview
-This section provides an overview of the available API endpoints for product recommendation and filtering.
-
-
 
 <img src="docs/screenshots/screenshot2.JPG" width="800" height="300"><br>
 The main endpoint for recommending products and filtering price.
