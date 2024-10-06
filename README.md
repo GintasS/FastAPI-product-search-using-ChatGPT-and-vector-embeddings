@@ -96,7 +96,7 @@ Please follow these steps for manual setup:
 
 #### System Design
 
-You can find System Design notes in [Miro](https://miro.com/app/board/uXjVLZLm9gc=/?share_link_id=867179278993).
+You can find System Design notes in the Product Search.pdf file.
 
 
 #### Environment variables
@@ -109,25 +109,25 @@ in the .env file, replace these environment variables with your own values.
 
 ## Screenshots
 
-<img src="docs/screenshots/screenshot1.jpg" width="800" height="400"><br>
+<img src="docs/screenshots/screenshot1.JPG" width="800" height="400"><br>
 The main Swagger view.
 
-<img src="docs/screenshots/screenshot2.jpg" width="800" height="300"><br>
+<img src="docs/screenshots/screenshot2.JPG" width="800" height="300"><br>
 The main endpoint for recommending products and filtering price.
 
-<img src="docs/screenshots/screenshot6.jpg" width="800" height="300"><br>
+<img src="docs/screenshots/screenshot6.JPG" width="800" height="300"><br>
 The response from the main endpoint that both recommends products and can filter by price.
 
-<img src="docs/screenshots/screenshot3.jpg" width="800" height="300"><br>
+<img src="docs/screenshots/screenshot3.JPG" width="800" height="300"><br>
 The second endpoint for recommending products by product description only.
 
-<img src="docs/screenshots/screenshot4.jpg" width="800" height="300"><br>
+<img src="docs/screenshots/screenshot4.JPG" width="800" height="300"><br>
 The third endpoint for filtering products by the price only.
 
-<img src="docs/screenshots/screenshot5.jpg" width="800" height="300"><br>
+<img src="docs/screenshots/screenshot5.JPG" width="800" height="300"><br>
 The response from the third endpoint that filters products by the price only.
 
-<img src="docs/screenshots/screenshot7.jpg" width="800" height="300"><br>
+<img src="docs/screenshots/screenshot7.JPG" width="800" height="300"><br>
 The example of how a prompt to ChatGPT can look like.
 
 ## License
